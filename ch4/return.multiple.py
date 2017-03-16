@@ -2,7 +2,7 @@ def moddiv(a, b):
     return a // b, a % b
 
 
-def test(n=10**4):
+def test(n=10 ** 4):
     from random import choice, random, randint
     m = 10 ** 6
     for x in range(n):
@@ -17,8 +17,7 @@ def test(n=10**4):
             print('Difference: ', a, b, r, r2)
 
 
-if __name__ == "__main__":
-
+if __name__ == "__main__": # todo: 이건 어떻게 처리되나?
     test(10 ** 6)
     print('Done')
 

@@ -8,7 +8,6 @@ import os
 from bs4 import BeautifulSoup
 import requests
 
-
 config = {}
 
 
@@ -90,7 +89,6 @@ def _alert(msg):
 
 
 if __name__ == "__main__":
-
     _root = Tk()
     _root.title('Scrape app')
 

@@ -4,7 +4,9 @@
 def func(arg1, arg2, ...):
     pass
 
+
 func = decorator(func)
+
 
 # is equivalent to the following:
 
@@ -17,7 +19,9 @@ def func(arg1, arg2, ...):
 def func(arg1, arg2, ...):
     pass
 
+
 func = deco1(deco2(func))
+
 
 # is equivalent to the following:
 
@@ -26,11 +30,14 @@ func = deco1(deco2(func))
 def func(arg1, arg2, ...):
     pass
 
+
 # DECORATOR WITH ARGUMENTS
 def func(arg1, arg2, ...):
     pass
 
+
 func = decoarg(arg_a, arg_b)(func)
+
 
 # is equivalent to the following:
 

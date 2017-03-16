@@ -18,3 +18,9 @@ class QuoteResource:
 
 api = falcon.API()
 api.add_route('/quote', QuoteResource())
+
+a = 10
+b = 20
+(a, b) = b, a
+
+10, 20 = 20, 10

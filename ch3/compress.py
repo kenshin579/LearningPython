@@ -1,4 +1,5 @@
 from itertools import compress
+
 data = range(10)
 even_selector = [1, 0] * 10
 odd_selector = [0, 1] * 10

@@ -2,6 +2,7 @@ def get_squares_gen(n):
     for x in range(n):
         yield x ** 2
 
+
 squares = get_squares_gen(3)
 print(squares.__next__())  # prints: 0
 print(squares.__next__())  # prints: 1

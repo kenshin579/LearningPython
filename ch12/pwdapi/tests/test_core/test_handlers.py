@@ -24,7 +24,6 @@ class PVHTest(PasswordValidatorHandler):
 
 
 class TestPasswordValidatorHandler(testing.TestBase):
-
     def before(self):
         self.resource = PVHTest()
         self.api.add_route('/password/validate/', self.resource)
@@ -40,9 +39,9 @@ class TestPasswordValidatorHandler(testing.TestBase):
         assert_dict_equal(
             {'password': 'abcABC0123#&',
              'score': {'case': 3, 'length': 5, 'numbers': 2,
-                'special': 4, 'ratio': 2, 'total': 16},
+                       'special': 4, 'ratio': 2, 'total': 16},
              'valid': True},
-             json.loads(resp.body))
+            json.loads(resp.body))
 
     def test_post_empty_body(self):
         self.simulate_request(
@@ -59,7 +58,6 @@ class TestPasswordValidatorHandler(testing.TestBase):
 
 
 class TestPasswordGeneratorHandler(testing.TestBase):
-
     def before(self):
         self.resource = PGHTest()
         self.api.add_route('/password/generate/', self.resource)

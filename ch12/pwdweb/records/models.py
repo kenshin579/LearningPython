@@ -6,7 +6,6 @@ from django.db import models
 
 
 class Record(models.Model):
-
     DEFAULT_ENCODING = 'utf-8'
 
     title = models.CharField(max_length=64, unique=True)

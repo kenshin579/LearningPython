@@ -3,7 +3,7 @@
 def geometric_progression(a, q):
     k = 0
     while True:
-        result = a * q**k
+        result = a * q ** k
         if result <= 100000:
             yield result
         else:

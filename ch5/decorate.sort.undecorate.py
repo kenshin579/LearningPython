@@ -1,6 +1,5 @@
 from pprint import pprint
 
-
 students = [
     dict(id=0, credits=dict(math=9, physics=6, history=7)),
     dict(id=1, credits=dict(math=6, physics=7, latin=10)),
@@ -12,6 +11,8 @@ students = [
 def decorate(student):
     # create a 2-tuple (sum of credits, student) from student dict
     return (sum(student['credits'].values()), student)
+
+
 pprint(decorate(students[0]))
 
 
@@ -21,8 +22,9 @@ def undecorate(decorated_student):
 
 
 students = sorted(map(decorate, students), reverse=True)
+pprint(students)
+
 students = list(map(undecorate, students))
 
-
-from pprint import pprint
+# Schwartzian transform: sorting시 key-function 기능을 제공하지 않고 sort할때 사용하던 방법
 pprint(students)

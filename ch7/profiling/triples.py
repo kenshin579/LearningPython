@@ -12,7 +12,7 @@ def calc_triples(mx):
 
 
 def calc_hypotenuse(a, b):
-    return (a*a + b*b) ** .5
+    return (a * a + b * b) ** .5
 
 
 def is_int(n):  # n is expected to be a float
@@ -42,7 +42,6 @@ ncalls  tottime  percall filename:lineno(function)
 500500    0.032    0.000 {method 'is_integer' of 'float' objects}
 """
 
-
 """
 def calc_hypotenuse(a, b):
     return (a*a + b*b) ** .5
@@ -63,7 +62,6 @@ $ python -m cProfile triples.py
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
    500500    0.029    0.000    0.029    0.000 {method 'is_integer' of 'float' objects}
 """
-
 
 """
 def is_int(n):

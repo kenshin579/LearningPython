@@ -13,6 +13,7 @@ for a in range(n):
 class ExitLoopException(Exception):
     pass
 
+
 try:
     n = 100
     for a in range(n):

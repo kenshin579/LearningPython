@@ -14,7 +14,6 @@ dmlist = [
     divmod(a, b) for a in range(1, mx) for b in range(a, mx)]
 print('list comprehension: {:.4f} s'.format(time() - t))
 
-
 t = time()  # start time for the generator expression
 dmgen = list(
     divmod(a, b) for a in range(1, mx) for b in range(a, mx))

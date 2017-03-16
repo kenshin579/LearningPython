@@ -2,13 +2,13 @@
 
 # let's define the class Bike
 class Bike:
-
     def __init__(self, colour, frame_material):
         self.colour = colour
         self.frame_material = frame_material
 
     def brake(self):
         print("Braking!")
+
 
 # let's create a couple of instances
 red_bike = Bike('Red', 'Carbon fiber')

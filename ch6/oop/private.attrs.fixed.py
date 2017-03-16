@@ -5,6 +5,7 @@ class A:
     def op1(self):
         print('Op1 with factor {}...'.format(self.__factor))
 
+
 class B(A):
     def op2(self, factor):
         self.__factor = factor
@@ -12,9 +13,9 @@ class B(A):
 
 
 obj = B(100)
-obj.op1()    # Op1 with factor 100...
+obj.op1()  # Op1 with factor 100...
 obj.op2(42)  # Op2 with factor 42...
-obj.op1()    # Op1 with factor 100...  <- Wohoo! Now it's GOOD!
+obj.op1()  # Op1 with factor 100...  <- Wohoo! Now it's GOOD!
 
 print(obj.__dict__.keys())
 # dict_keys(['_A__factor', '_B__factor'])

@@ -1,6 +1,7 @@
 class ValidatorError(Exception):
     """Raised when accessing a dict results in KeyError. """
 
+
 d = {'some': 'key'}
 mandatory_key = 'some-other'
 try:

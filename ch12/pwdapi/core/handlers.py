@@ -12,7 +12,6 @@ class HeaderMixin:
 
 
 class PasswordValidatorHandler(HeaderMixin):
-
     def on_post(self, req, resp):
         self.process_request(req, resp)
 
@@ -38,7 +37,7 @@ class PasswordValidatorHandler(HeaderMixin):
         body = req.stream.read()
         if not body:
             raise falcon.HTTPBadRequest('Empty request body',
-                'A valid JSON document is required.')
+                                        'A valid JSON document is required.')
         try:
             req.context['_body'] = json.loads(
                 body.decode('utf-8'))
@@ -49,7 +48,6 @@ class PasswordValidatorHandler(HeaderMixin):
 
 
 class PasswordGeneratorHandler(HeaderMixin):
-
     def on_get(self, req, resp):
         self.process_request(req, resp)
         length = req.context.get('_length', 16)
@@ -67,4 +65,4 @@ class PasswordGeneratorHandler(HeaderMixin):
             req.context['_length'] = length
         except (ValueError, TypeError, AssertionError):
             raise falcon.HTTPBadRequest('Wrong query parameter',
-                '`length` must be a positive integer.')
+                                        '`length` must be a positive integer.')

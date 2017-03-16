@@ -2,6 +2,7 @@ class Point():
     x = 10
     y = 7
 
+
 p = Point()
 print(p.x)  # 10 (from class attribute)
 print(p.y)  # 7 (from class attribute)

@@ -1,5 +1,5 @@
 def my_function():
-    test = 1 # this is defined in the local scope of the function
+    test = 1  # this is defined in the local scope of the function
     print('my_function:', test)
 
 

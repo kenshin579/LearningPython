@@ -1,11 +1,14 @@
 class A:
     label = 'a'
 
+
 class B(A):
     pass  # was: label = 'b'
 
+
 class C(A):
     label = 'c'
+
 
 class D(B, C):
     pass

@@ -9,7 +9,6 @@ class Shape:
 
 
 class Plotter:
-
     def plot(self, ratio, topleft):
         # Imagine some nice plotting logic here...
         print('Plotting at {}, ratio {}.'.format(
@@ -19,6 +18,7 @@ class Plotter:
 class Polygon(Shape, Plotter):  # base class for polygons
     geometric_type = 'Polygon'
 
+
 class RegularPolygon(Polygon):  # Is-A Polygon
     geometric_type = 'Regular Polygon'
 
@@ -26,7 +26,7 @@ class RegularPolygon(Polygon):  # Is-A Polygon
         self.side = side
 
 
-class RegularHexagon(RegularPolygon): # Is-A RegularPolygon
+class RegularHexagon(RegularPolygon):  # Is-A RegularPolygon
     geometric_type = 'RegularHexagon'
 
     def area(self):

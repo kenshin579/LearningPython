@@ -10,7 +10,6 @@ from core.passwords import PasswordValidator, PasswordGenerator
 
 
 class PasswordValidatorTestCase(TestCase):
-
     @parameterized.expand([
         (False, ''),
         (False, '  '),
@@ -126,7 +125,6 @@ class PasswordValidatorTestCase(TestCase):
             _score_numbers_mock,
             _score_case_mock,
             _score_length_mock):
-
         _score_ratio_mock.return_value = 2
         _score_special_mock.return_value = 3
         _score_numbers_mock.return_value = 5
@@ -148,7 +146,6 @@ class PasswordValidatorTestCase(TestCase):
 
 
 class PasswordGeneratorTestCase(TestCase):
-
     def test__generate_password_length(self):
         for length in range(300):
             assert_equal(

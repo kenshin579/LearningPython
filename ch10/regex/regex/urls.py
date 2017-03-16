@@ -20,7 +20,6 @@ from django.core.urlresolvers import reverse_lazy
 
 from entries.views import HomeView, EntryListView, EntryFormView
 
-
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^entries/$', EntryListView.as_view(), name='entries'),

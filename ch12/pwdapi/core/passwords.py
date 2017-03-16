@@ -3,14 +3,12 @@ from math import ceil
 from random import sample
 from string import ascii_lowercase, ascii_uppercase, digits
 
-
 punctuation = '!#$%&()*+-?@_|'
 allchars = ''.join(
     (ascii_lowercase, ascii_uppercase, digits, punctuation))
 
 
 class PasswordValidator:
-
     def __init__(self, password):
         self.password = password.strip()
 
@@ -30,7 +28,7 @@ class PasswordValidator:
         return result
 
     def _score_length(self):
-        scores_list = ([0]*4) + ([1]*4) + ([3]*4) + ([5]*4)
+        scores_list = ([0] * 4) + ([1] * 4) + ([3] * 4) + ([5] * 4)
         scores = dict(enumerate(scores_list))
         return scores.get(len(self.password), 7)
 
@@ -58,13 +56,12 @@ class PasswordValidator:
 
 
 class PasswordGenerator:
-
     @classmethod
     def generate(cls, length, bestof=10):
         candidates = sorted([
-            cls._generate_candidate(length)
-            for k in range(max(1, bestof))
-        ])
+                                cls._generate_candidate(length)
+                                for k in range(max(1, bestof))
+                                ])
         return candidates[-1]
 
     @classmethod

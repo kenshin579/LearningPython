@@ -1,5 +1,4 @@
 class Book:
-
     def __init__(self, title, publisher, pages):
         self.title = title
         self.publisher = publisher
@@ -7,7 +6,6 @@ class Book:
 
 
 class Ebook(Book):
-
     def __init__(self, title, publisher, pages, format_):
         super().__init__(title, publisher, pages)
         # Another way to do the same thing is:

@@ -15,7 +15,6 @@ class HomeView(TemplateView):
 
 
 class EncryptionMixin:
-
     def form_valid(self, form):
         self.encrypt_password(form)
         return super(EncryptionMixin, self).form_valid(form)
@@ -27,7 +26,7 @@ class EncryptionMixin:
 
 
 class RecordCreateView(
-        EncryptionMixin, SuccessMessageMixin, CreateView):
+    EncryptionMixin, SuccessMessageMixin, CreateView):
     template_name = 'records/record_add_edit.html'
     form_class = RecordForm
     success_url = reverse_lazy('records:add')
@@ -35,7 +34,7 @@ class RecordCreateView(
 
 
 class RecordUpdateView(
-        EncryptionMixin, SuccessMessageMixin, UpdateView):
+    EncryptionMixin, SuccessMessageMixin, UpdateView):
     template_name = 'records/record_add_edit.html'
     form_class = RecordForm
     model = Record
@@ -75,8 +74,8 @@ class RecordListView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        records = Record.objects.all().order_by('title')  #1
+        records = Record.objects.all().order_by('title')  # 1
         for record in records:
-            record.plaintext = record.decrypt(record.password) #2
+            record.plaintext = record.decrypt(record.password)  # 2
         context['records'] = records
         return self.render_to_response(context)

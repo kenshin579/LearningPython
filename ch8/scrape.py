@@ -43,7 +43,7 @@ def _filter_images(images, type_):
     return [
         img for img in images
         if _matches_extension(img['name'], ext_map[type_])
-    ]
+        ]
 
 
 def _matches_extension(filename, extension_list):
@@ -82,7 +82,6 @@ def _save_json(images):
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(
         description='Scrape a webpage.')
     parser.add_argument(

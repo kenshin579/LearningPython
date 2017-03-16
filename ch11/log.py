@@ -18,7 +18,6 @@ for position in range(4):
 
 logging.info('Done parsing `mylist`.')
 
-
 """ ch11.log
 [10/08/2015 04:25:59 PM] INFO:Starting to process `mylist`...
 [10/08/2015 04:25:59 PM] DEBUG:Value at position 0 is 1

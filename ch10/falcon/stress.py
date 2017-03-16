@@ -4,8 +4,10 @@ import urllib.request
 
 URLS = ['http://127.0.0.1:8000/quote'] * 2000
 
+
 def load_url(url, timeout):
     return urllib.request.urlopen(url, timeout=timeout).read()
+
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     future_to_url = dict((executor.submit(load_url, url, 60), url)

@@ -3,7 +3,6 @@ def get_squares(n):  # classic function approach
 
 print(get_squares(10))
 
-
 def get_squares_gen(n):  # generator approach
     for x in range(n):
         yield x ** 2  # we yield, we don't return

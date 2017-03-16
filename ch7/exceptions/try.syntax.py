@@ -1,4 +1,3 @@
-
 def try_syntax(numerator, denominator):
     try:
         print('In the try block: {}/{}'
@@ -11,6 +10,7 @@ def try_syntax(numerator, denominator):
         return result
     finally:
         print('Exiting')
+
 
 print(try_syntax(12, 4))
 print(try_syntax(11, 0))

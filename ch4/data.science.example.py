@@ -14,7 +14,6 @@ def do_report(data_source):
 
 
 if __name__ == "__main__":
-
     print(
         "Please don't call the `do_report` function. "
         "It's just and example."

@@ -1,4 +1,4 @@
-from math import sqrt, ceil
+from math import sqrt2, ceil
 
 
 def get_primes(n):
@@ -19,9 +19,8 @@ def get_primes(n):
 
 
 if __name__ == "__main__":
-
     def test():
-        primes = get_primes(10**3)
+        primes = get_primes(10 ** 3)
         primes2 = [
             2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43,
             47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103,
@@ -40,6 +39,7 @@ if __name__ == "__main__":
             941, 947, 953, 967, 971, 977, 983, 991, 997
         ]
         return primes == primes2
+
 
     print(test())
 

@@ -6,7 +6,6 @@ from core.handlers import (
     PasswordGeneratorHandler,
 )
 
-
 validation_handler = PasswordValidatorHandler()
 generator_handler = PasswordGeneratorHandler()
 
