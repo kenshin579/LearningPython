@@ -1,6 +1,5 @@
 class Person():
-    species = 'Human'
-
+    species = 'Human' # note: class attributes
 
 print(Person.species)  # Human
 Person.alive = True  # Added dynamically!
@@ -13,6 +12,7 @@ print(man.alive)  # True (inherited)
 Person.alive = False
 print(man.alive)  # False (inherited)
 
+# note: instance attrbutes
 man.name = 'Darth'
 man.surname = 'Vader'
 print(man.name, man.surname)  # Darth Vader

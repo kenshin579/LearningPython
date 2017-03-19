@@ -15,7 +15,6 @@ class String:
     def get_unique_words(sentence):
         return set(sentence.split())
 
-
 print(String.is_palindrome(
     'Radar', case_insensitive=False))  # False: Case Sensitive
 print(String.is_palindrome('A nut for a jar of tuna'))  # True
@@ -27,3 +26,7 @@ print(String.is_palindrome(
 print(String.get_unique_words(
     'I love palindromes. I really really love them!'))
 # {'them!', 'really', 'palindromes.', 'I', 'love'}
+
+# test
+print(45 / 2) # 22.5
+print(45 // 2) # 22

@@ -5,14 +5,11 @@ class Engine():
     def stop(self):
         pass
 
-
 class ElectricEngine(Engine):  # Is-A Engine
     pass
 
-
 class V8Engine(Engine):  # Is-A Engine
     pass
-
 
 class Car():
     engine_cls = Engine
@@ -32,18 +29,14 @@ class Car():
     def stop(self):
         self.engine.stop()
 
-
 class RaceCar(Car):  # Is-A Car
     engine_cls = V8Engine
-
 
 class CityCar(Car):  # Is-A Car
     engine_cls = ElectricEngine
 
-
 class F1Car(RaceCar):  # Is-A RaceCar and also Is-A Car
     engine_cls = V8Engine
-
 
 car = Car()
 racecar = RaceCar()

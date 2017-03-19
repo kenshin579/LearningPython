@@ -4,12 +4,12 @@ class Book:
         self.publisher = publisher
         self.pages = pages
 
-
 class Ebook(Book):
     def __init__(self, title, publisher, pages, format_):
-        Book.__init__(self, title, publisher, pages)
+        super().__init__(title, publisher, pages)
+        # Another way to do the same thing is:
+        # super(Ebook, self).__init__(title, publisher, pages)
         self.format_ = format_
-
 
 ebook = Ebook('Learning Python', 'Packt Publishing', 360, 'PDF')
 print(ebook.title)  # Learning Python

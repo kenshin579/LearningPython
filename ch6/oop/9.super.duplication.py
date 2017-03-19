@@ -4,10 +4,9 @@ class Book:
         self.publisher = publisher
         self.pages = pages
 
-
 class Ebook(Book):
     def __init__(self, title, publisher, pages, format_):
-        self.title = title
+        self.title = title # note: 중복이 있음!!
         self.publisher = publisher
         self.pages = pages
         self.format_ = format_

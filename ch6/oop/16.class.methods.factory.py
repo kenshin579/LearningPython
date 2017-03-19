@@ -5,12 +5,11 @@ class Point:
 
     @classmethod
     def from_tuple(cls, coords):  # cls is Point
-        return cls(*coords)
+        return cls(*coords)  # note: 클래스를 return함
 
     @classmethod
     def from_point(cls, point):  # cls is Point
         return cls(point.x, point.y)
-
 
 p = Point.from_tuple((3, 7))
 print(p.x, p.y)  # 3 7

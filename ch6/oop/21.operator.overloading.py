@@ -8,7 +8,6 @@ class Weird:
     def __bool__(self):
         return '42' in self._s
 
-
 weird = Weird('Hello! I am 9 years old!')
 print(len(weird))  # 24
 print(bool(weird))  # False

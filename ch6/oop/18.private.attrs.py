@@ -5,12 +5,10 @@ class A:
     def op1(self):
         print('Op1 with factor {}...'.format(self._factor))
 
-
 class B(A):
     def op2(self, factor):
         self._factor = factor
         print('Op2 with factor {}...'.format(self._factor))
-
 
 obj = B(100)
 obj.op1()  # Op1 with factor 100...

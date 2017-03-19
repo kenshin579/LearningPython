@@ -5,17 +5,14 @@ class Engine():
     def stop(self):
         pass
 
-
-class ElectricEngine(Engine):  # Is-A Engine
+class ElectricEngine(Engine):  # Is-A Engine (inheritance)
     pass
-
 
 class V8Engine(Engine):  # Is-A Engine
     pass
 
-
 class Car():
-    engine_cls = Engine
+    engine_cls = Engine # note: 이건 공동으로 share되는 class attribute
 
     def __init__(self):
         self.engine = self.engine_cls()  # Has-A Engine
@@ -32,18 +29,14 @@ class Car():
     def stop(self):
         self.engine.stop()
 
-
 class RaceCar(Car):  # Is-A Car
-    engine_cls = V8Engine
-
+    engine_cls = V8Engine # note: Car().__init__에 의해서 세팅이 됨
 
 class CityCar(Car):  # Is-A Car
     engine_cls = ElectricEngine
 
-
 class F1Car(RaceCar):  # Is-A RaceCar and also Is-A Car
     engine_cls = V8Engine
-
 
 car = Car()
 racecar = RaceCar()

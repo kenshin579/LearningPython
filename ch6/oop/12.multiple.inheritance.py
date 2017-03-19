@@ -7,17 +7,14 @@ class Shape:
     def get_geometric_type(self):
         return self.geometric_type
 
-
 class Plotter:
     def plot(self, ratio, topleft):
         # Imagine some nice plotting logic here...
         print('Plotting at {}, ratio {}.'.format(
             topleft, ratio))
 
-
 class Polygon(Shape, Plotter):  # base class for polygons
     geometric_type = 'Polygon'
-
 
 class RegularPolygon(Polygon):  # Is-A Polygon
     geometric_type = 'Regular Polygon'
@@ -25,20 +22,17 @@ class RegularPolygon(Polygon):  # Is-A Polygon
     def __init__(self, side):
         self.side = side
 
-
 class RegularHexagon(RegularPolygon):  # Is-A RegularPolygon
     geometric_type = 'RegularHexagon'
 
     def area(self):
         return 1.5 * (3 ** .5 * self.side ** 2)
 
-
 class Square(RegularPolygon):  # Is-A RegularPolygon
     geometric_type = 'Square'
 
     def area(self):
         return self.side * self.side
-
 
 hexagon = RegularHexagon(10)
 print(hexagon.area())  # 259.8076211353316
