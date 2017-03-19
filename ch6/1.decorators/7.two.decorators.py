@@ -1,6 +1,5 @@
-from time import sleep, time
 from functools import wraps
-
+from time import time
 
 def measure(func):
     @wraps(func)
@@ -11,7 +10,6 @@ def measure(func):
         return result
 
     return wrapper
-
 
 def max_result(func):
     @wraps(func)
@@ -24,12 +22,11 @@ def max_result(func):
 
     return wrapper
 
-
 @measure
 @max_result
 def cube(n):
     return n ** 3
 
-
 print(cube(2))
-print(cube(5))
+print()
+print(cube(5)) #note: measure -> max_result -> cube이 호출됨

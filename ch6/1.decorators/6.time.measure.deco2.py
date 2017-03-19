@@ -1,9 +1,8 @@
 from time import sleep, time
 from functools import wraps
 
-
 def measure(func):
-    @wraps(func)
+    @wraps(func)  # 실제 wrapper 함수는 func를 wrap한다고 정의함
     def wrapper(*args, **kwargs):
         t = time()
         func(*args, **kwargs)
@@ -11,12 +10,10 @@ def measure(func):
 
     return wrapper
 
-
 @measure
 def f(sleep_time=0.1):
     """I'm a cat. I love to sleep! """
     sleep(sleep_time)
-
 
 f(sleep_time=0.3)  # f took: 0.30039525032043457
 print(f.__name__, ':', f.__doc__)
