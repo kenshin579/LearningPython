@@ -3,6 +3,7 @@ class OddEven:
         self._data = data
         self.indexes = (list(range(0, len(data), 2)) +
                         list(range(1, len(data), 2)))
+        print("indexes", self.indexes)
 
     def __iter__(self):
         return self
@@ -11,7 +12,6 @@ class OddEven:
         if self.indexes:
             return self._data[self.indexes.pop(0)]
         raise StopIteration
-
 
 oddeven = OddEven('ThIsIsCoOl!')
 print(''.join(c for c in oddeven))  # TIICO!hssol

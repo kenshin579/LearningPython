@@ -19,7 +19,7 @@ class PersonPythonic:
     def __init__(self, age):
         self._age = age
 
-    @property
+    @property #note: data attribute처럼 접근 가능함 todo? 그면 속도가 빠른건가?
     def age(self):
         return self._age
 
