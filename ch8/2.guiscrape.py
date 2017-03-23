@@ -10,7 +10,6 @@ import requests
 
 config = {}
 
-
 def fetch_url():
     url = _url.get()
     config['images'] = []
@@ -23,12 +22,12 @@ def fetch_url():
         soup = BeautifulSoup(page.content, 'html.parser')
         images = fetch_images(soup, url)
         if images:
+            print("_images", tuple(img['name'] for img in images))
             _images.set(tuple(img['name'] for img in images))
             _sb('Images found: {}'.format(len(images)))
         else:
             _sb('No images found')
         config['images'] = images
-
 
 def fetch_images(soup, base_url):
     images = []
@@ -39,7 +38,6 @@ def fetch_images(soup, base_url):
         name = img_url.split('/')[-1]
         images.append(dict(name=name, url=img_url))
     return images
-
 
 def save():
     if not config.get('images'):
@@ -55,7 +53,6 @@ def save():
             filetypes=[('JSON', '.json')])
         _save_json(filename)
 
-
 def _save_images(dirname):
     if dirname and config.get('images'):
         for img in config['images']:
@@ -64,7 +61,6 @@ def _save_images(dirname):
             with open(filename, 'wb') as f:
                 f.write(img_data)
         _alert('Done')
-
 
 def _save_json(filename):
     if filename and config.get('images'):
@@ -79,14 +75,11 @@ def _save_json(filename):
             ijson.write(json.dumps(data))
         _alert('Done')
 
-
 def _sb(msg):
     _status_msg.set(msg)
 
-
 def _alert(msg):
     messagebox.showinfo(message=msg)
-
 
 if __name__ == "__main__":
     _root = Tk()
@@ -101,16 +94,19 @@ if __name__ == "__main__":
     _url_frame.columnconfigure(0, weight=1)
     _url_frame.rowconfigure(0, weight=1)
 
+    # URL inputbox
     _url = StringVar()
-    _url.set('http://localhost:8000')
+    _url.set('http://localhost:8000/simple_server/index.html')
     _url_entry = ttk.Entry(
         _url_frame, width=40, textvariable=_url)
     _url_entry.grid(row=0, column=0, sticky=(E, W, S, N), padx=5)
 
+    #Fetch info 버튼
     _fetch_btn = ttk.Button(
-        _url_frame, text='Fetch info', command=fetch_url)
+        _url_frame, text='Fetch info', command=fetch_url) # 메세드 등록
     _fetch_btn.grid(row=0, column=1, sticky=W, padx=5)
 
+    # Listbox
     _img_frame = ttk.LabelFrame(
         _mainframe, text='Content', padding='9 0 0 0')
     _img_frame.grid(row=1, column=0, sticky=(N, S, E, W))
@@ -124,6 +120,7 @@ if __name__ == "__main__":
     _scrollbar.grid(row=0, column=1, sticky=(S, N), pady=6)
     _img_listbox.configure(yscrollcommand=_scrollbar.set)
 
+    # images or JSON
     _radio_frame = ttk.Frame(_img_frame)
     _radio_frame.grid(row=0, column=2, sticky=(N, S, W, E))
 
@@ -145,9 +142,10 @@ if __name__ == "__main__":
     _json_radio.grid(row=2, column=0, padx=5, pady=2, sticky=W)
 
     _scrape_btn = ttk.Button(
-        _mainframe, text='Scrape!', command=save)
+        _mainframe, text='Scrape!', command=save) #메서드 등록
     _scrape_btn.grid(row=2, column=0, sticky=E, pady=5)
 
+    # status frame
     _status_frame = ttk.Frame(
         _root, relief='sunken', padding='2 2 2 2')
     _status_frame.grid(row=1, column=0, sticky=(E, W, S))

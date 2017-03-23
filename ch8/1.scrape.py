@@ -4,9 +4,8 @@ import base64
 import json
 import os
 
-from bs4 import BeautifulSoup
 import requests
-
+from bs4 import BeautifulSoup
 
 def scrape(url, format_, type_):
     try:
@@ -15,10 +14,11 @@ def scrape(url, format_, type_):
         print(str(rex))
     else:
         soup = BeautifulSoup(page.content, 'html.parser')
+        # print("soup", soup)
         images = _fetch_images(soup, url)
+        print("images", images)
         images = _filter_images(images, type_)
         _save(images, format_)
-
 
 def _fetch_images(soup, base_url):
     # Works only with relative src paths.
@@ -32,7 +32,6 @@ def _fetch_images(soup, base_url):
         images.append(dict(name=name, url=img_url))
     return images
 
-
 def _filter_images(images, type_):
     if type_ == 'all':
         return images
@@ -40,16 +39,13 @@ def _filter_images(images, type_):
         'png': ['.png'],
         'jpg': ['.jpg', '.jpeg'],
     }
-    return [
-        img for img in images
-        if _matches_extension(img['name'], ext_map[type_])
-        ]
-
+    return [img for img in images
+            if _matches_extension(img['name'], ext_map[type_])]
 
 def _matches_extension(filename, extension_list):
     name, extension = os.path.splitext(filename.lower())
+    print("name", name, "extension", extension)
     return extension in extension_list
-
 
 def _save(images, format_):
     if images:
@@ -61,13 +57,11 @@ def _save(images, format_):
     else:
         print('No images to save.')
 
-
 def _save_images(images):
     for img in images:
         img_data = requests.get(img['url']).content
         with open(img['name'], 'wb') as f:
             f.write(img_data)
-
 
 def _save_json(images):
     data = {}
@@ -79,7 +73,6 @@ def _save_json(images):
 
     with open('images.json', 'w') as ijson:
         ijson.write(json.dumps(data))
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -102,5 +95,6 @@ if __name__ == "__main__":
         'url',
         help='The URL we want to scrape for images.')
 
-    args = parser.parse_args()
+    args = parser.parse_args()  # parse all the arguments
+    print("args", args)
     scrape(args.url, args.format, args.type)
