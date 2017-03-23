@@ -4,9 +4,7 @@ from nose.tools import assert_equal, assert_list_equal
 
 from ch7.filter_funcs_refactored import filter_ints
 
-
 class FilterIntsTestCase(TestCase):
-
     @expectedFailure
     @patch('ch7.filter_funcs_refactored.is_positive')
     def test_filter_ints(self, is_positive_mock):
@@ -14,8 +12,10 @@ class FilterIntsTestCase(TestCase):
 
         filter_ints(v)
 
+        print(":is_positive_mock.call_args_list", is_positive_mock.call_args_list)
+
         assert_equal(
-            [call(3), call(-4), call(0), call(5), call(8)],
+            [call(3), call(-4), call(0), call(5), call(8)], #note: call(0)이 제거되어야 함
             is_positive_mock.call_args_list
         )
 

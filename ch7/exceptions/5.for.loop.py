@@ -9,10 +9,9 @@ for a in range(n):
                 found = True
                 print(a, b, c)  # 79 99 95
 
-
 class ExitLoopException(Exception):
+    print("ExitLoopException")
     pass
-
 
 try:
     n = 100

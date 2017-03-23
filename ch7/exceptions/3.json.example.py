@@ -1,6 +1,6 @@
 import json
 
-json_data = '{}'  # try: json_data = 2, and json_data = '{{'
+json_data = 2 # try: json_data = 2, and json_data = '{{'
 
 try:
     data = json.loads(json_data)

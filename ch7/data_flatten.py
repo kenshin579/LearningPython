@@ -24,7 +24,6 @@ flat = {
     'residence.country': 'UK',
 }
 
-
 def flatten(data, prefix='', separator='.'):
     """Flattens a nested dict structure. """
     if not isinstance(data, dict):
@@ -32,7 +31,8 @@ def flatten(data, prefix='', separator='.'):
 
     result = {}
     for (key, value) in data.items():
-        result.update(
+        print("prefix: ", _get_new_prefix(prefix, key, separator))
+        result.update( # update 함수는 dict 구조에 추가하는 함수
             flatten(
                 value,
                 _get_new_prefix(prefix, key, separator),
@@ -40,11 +40,18 @@ def flatten(data, prefix='', separator='.'):
 
     return result
 
-
 def _get_new_prefix(prefix, key, separator):
-    return (separator.join((prefix, str(key)))
+    return (separator.join((prefix, str(key))) #note: python에서 ternary operator
             if prefix else str(key))
-
 
 if __name__ == "__main__":
     print(flatten(nested))
+
+# test
+# test_dict = {
+#     'age': 41,
+#     'phone-numbers': ['+447421234567', '+447423456789'],
+# }
+#
+# test_dict.update({"frank": 13})
+# print(test_dict)

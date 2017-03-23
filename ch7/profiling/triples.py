@@ -10,14 +10,12 @@ def calc_triples(mx):
                 triples.append((a, b, int(hypotenuse)))
     return triples
 
-
 def calc_hypotenuse(a, b):
-    return (a * a + b * b) ** .5
-
+    return (a ** 2 + b ** 2) ** .5
+    # return (a * a + b * b) ** .5
 
 def is_int(n):  # n is expected to be a float
     return n.is_integer()
-
 
 triples = calc_triples(1000)
 

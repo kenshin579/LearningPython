@@ -3,9 +3,7 @@ from nose.tools import assert_equal
 
 from ch7.data_flatten import flatten
 
-
 class FlattenTestCase(TestCase):
-
     def test_flatten(self):
         test_cases = [
             ({'A': {'B': 'C', 'D': [1, 2, 3], 'E': {'F': 'G'}},
