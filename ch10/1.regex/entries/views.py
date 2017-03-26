@@ -10,7 +10,6 @@ from django.views.generic import FormView, TemplateView
 from .forms import EntryForm
 from .models import Entry
 
-
 class HomeView(TemplateView):
     template_name = 'entries/home.html'
 
@@ -18,7 +17,6 @@ class HomeView(TemplateView):
         login_required(login_url=reverse_lazy('login')))
     def get(self, request, *args, **kwargs):
         return super(HomeView, self).get(request, *args, **kwargs)
-
 
 class EntryListView(TemplateView):
     template_name = 'entries/list.html'
@@ -42,7 +40,6 @@ class EntryListView(TemplateView):
                 match.groupdict() or None
             )
         return None
-
 
 class EntryFormView(SuccessMessageMixin, FormView):
     template_name = 'entries/insert.html'

@@ -5,7 +5,6 @@ from django.db import models, migrations
 from django.conf import settings
 import django.utils.timezone
 
-
 class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
