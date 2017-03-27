@@ -1,6 +1,5 @@
 from time import sleep
 
-
 def debug(*msg, timestamp=[None]):
     print(*msg)
     from time import time  # local import
@@ -11,7 +10,6 @@ def debug(*msg, timestamp=[None]):
         print(' Time elapsed: {:.3f}s'.format(
             now - timestamp[0]))
         timestamp[0] = now  # 2
-
 
 debug('Entering nasty piece of code...')
 sleep(.3)
