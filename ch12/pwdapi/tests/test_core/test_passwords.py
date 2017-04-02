@@ -2,12 +2,11 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from nose_parameterized import parameterized, param
 from nose.tools import (
     assert_equal, assert_dict_equal, assert_true)
+from parameterized import parameterized, param
 
-from core.passwords import PasswordValidator, PasswordGenerator
-
+from ch12.pwdapi.core.passwords import PasswordValidator, PasswordGenerator
 
 class PasswordValidatorTestCase(TestCase):
     @parameterized.expand([
@@ -144,7 +143,6 @@ class PasswordValidatorTestCase(TestCase):
 
         assert_dict_equal(expected_result, validator.score())
 
-
 class PasswordGeneratorTestCase(TestCase):
     def test__generate_password_length(self):
         for length in range(300):
@@ -165,7 +163,7 @@ class PasswordGeneratorTestCase(TestCase):
         expected_score = PasswordValidator(password).score()
         assert_equal(expected_score['total'], score)
 
-    @patch.object(PasswordGenerator, '_generate_candidate')
+    @patch.object(PasswordGenerator, '_generate_candidate') # 암호 생성이 random이기 때문에 _generate_candidate함수를 mock함
     def test__generate(self, _generate_candidate_mock):
         # checks `generate` returns the highest score candidate
         _generate_candidate_mock.side_effect = [

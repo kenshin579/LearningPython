@@ -5,14 +5,12 @@ import falcon
 
 from .passwords import PasswordValidator, PasswordGenerator
 
-
 class HeaderMixin:
     def set_access_control_allow_origin(self, resp):
-        resp.set_header('Access-Control-Allow-Origin', '*')
-
+        resp.set_header('Access-Control-Allow-Origin', '*')  # production에서는 이렇게 하면 안됨.
 
 class PasswordValidatorHandler(HeaderMixin):
-    def on_post(self, req, resp):
+    def on_post(self, req, resp):  # POST로 받음
         self.process_request(req, resp)
 
         password = req.context.get('_body', {}).get('password')
@@ -46,9 +44,8 @@ class PasswordValidatorHandler(HeaderMixin):
                 falcon.HTTP_753, 'Malformed JSON',
                 'JSON incorrect or not utf-8 encoded.')
 
-
 class PasswordGeneratorHandler(HeaderMixin):
-    def on_get(self, req, resp):
+    def on_get(self, req, resp):  # GET method로 받음
         self.process_request(req, resp)
         length = req.context.get('_length', 16)
         resp.body = json.dumps(

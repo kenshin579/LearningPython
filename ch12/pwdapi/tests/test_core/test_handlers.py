@@ -4,27 +4,23 @@ from unittest.mock import patch
 
 from nose.tools import assert_dict_equal, assert_equal
 
-import falcon
 import falcon.testing as testing
 
-from core.handlers import (
-    PasswordValidatorHandler, PasswordGeneratorHandler)
+from ch12.pwdapi.core.handlers import (PasswordValidatorHandler, PasswordGeneratorHandler)
 
-
+# process_request 메서드를 override하기 위해서 PasswordValidatorHandler, PasswordGeneratorHandler 상속받음
 class PGHTest(PasswordGeneratorHandler):
     def process_request(self, req, resp):
         self.req, self.resp = req, resp
         return super(PGHTest, self).process_request(req, resp)
-
 
 class PVHTest(PasswordValidatorHandler):
     def process_request(self, req, resp):
         self.req, self.resp = req, resp
         return super(PVHTest, self).process_request(req, resp)
 
-
 class TestPasswordValidatorHandler(testing.TestBase):
-    def before(self):
+    def before(self): #falcon testing module에서 먼저 호출됨
         self.resource = PVHTest()
         self.api.add_route('/password/validate/', self.resource)
 
@@ -56,13 +52,12 @@ class TestPasswordValidatorHandler(testing.TestBase):
             method='POST')
         assert_equal('753 Syntax Error', self.srmock.status)
 
-
 class TestPasswordGeneratorHandler(testing.TestBase):
     def before(self):
         self.resource = PGHTest()
         self.api.add_route('/password/generate/', self.resource)
 
-    @patch('core.handlers.PasswordGenerator')
+    @patch('ch12.pwdapi.core.handlers.PasswordGenerator')
     def test_get(self, PasswordGenerator):
         PasswordGenerator.generate.return_value = (7, 'abc123')
         self.simulate_request(

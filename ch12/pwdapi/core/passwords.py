@@ -7,7 +7,6 @@ punctuation = '!#$%&()*+-?@_|'
 allchars = ''.join(
     (ascii_lowercase, ascii_uppercase, digits, punctuation))
 
-
 class PasswordValidator:
     def __init__(self, password):
         self.password = password.strip()
@@ -30,10 +29,11 @@ class PasswordValidator:
     def _score_length(self):
         scores_list = ([0] * 4) + ([1] * 4) + ([3] * 4) + ([5] * 4)
         scores = dict(enumerate(scores_list))
+        print("scores", scores)
         return scores.get(len(self.password), 7)
 
     def _score_case(self):
-        lower = bool(set(ascii_lowercase) & set(self.password))
+        lower = bool(set(ascii_lowercase) & set(self.password)) #2 세트에 intersection이 있는 경우에만 true임 (결국 lower인지 확인)
         upper = bool(set(ascii_uppercase) & set(self.password))
         return int(lower or upper) + 2 * (lower and upper)
 
@@ -54,15 +54,14 @@ class PasswordValidator:
             return 0
         return min(ceil(alpha_count / digits_count), 7)
 
-
 class PasswordGenerator:
-    @classmethod
+    @classmethod # instance 생성없이 호출할 수 있도록 해줌
     def generate(cls, length, bestof=10):
         candidates = sorted([
-                                cls._generate_candidate(length)
-                                for k in range(max(1, bestof))
-                                ])
-        return candidates[-1]
+            cls._generate_candidate(length)
+            for k in range(max(1, bestof))
+        ])
+        return candidates[-1] #password의 score가 best인 것을 반환함
 
     @classmethod
     def _generate_candidate(cls, length):
